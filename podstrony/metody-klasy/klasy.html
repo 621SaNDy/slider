@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../style/arkusz_zerujacy.css">
+    <link rel="stylesheet" href="../../style/podstrony.css">
+    <link rel="stylesheet" href="../../biblioteka/highlight/styles/atom-one-dark-reasonable.min.css">
+
+
+    <title>Klasy</title>
+
+</head>
+
+<body>
+    <nav>
+        <ul class="menu">
+
+            <li>
+                <p>Czym jest slider?</p>
+                <ul class="dropdown" style="width: 215px;">
+                    <a href="../info/informacje.html">
+                        <li>Informacje</li>
+                    </a>
+                    <a href="../info/podstawy.html">
+                        <li>Podstawy Slidera</li>
+                    </a>
+                </ul>
+
+            </li>
+
+            <li>
+                <p>Klasy i metody</p>
+                <ul class="dropdown" style="width: 195px;">
+                    <a href="../metody-klasy/klasy.html">
+                        <li>Klasy</li>
+                    </a>
+                    <a href="../metody-klasy/metody.html">
+                        <li>Metody</li>
+                    </a>
+                </ul>
+            </li>
+
+            <li>
+                <p>Zdarzenia i opcje</p>
+                <ul class="dropdown" style="width: 225px;">
+                    <a href="../zdarzenia-opcje/zdarzenia.html">
+                        <li>Zdarzenia</li>
+                    </a>
+                    <a href="../zdarzenia-opcje/opcje.html">
+                        <li>Opcje</li>
+                    </a>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div class="cont">
+        <header>
+            <h1>Klasy Slidera</h1>
+        </header>
+
+        <div class="opisy flex">
+            <div class="opis">
+                <p>
+                    Dzięki klasie <strong>.carousel-caption</strong> można dodawać podpisy do slajdów w swoim sliderze.
+                    W przykładzie
+                    pokazane jest zastosowanie klas d-none oraz d-md-block. Klasa d-none powoduje, że tekst jest ukryty,
+                    natomiast klasa d-md-block sprawia, że tekst staje się widoczny tylko w przypadku, gdy szerokość
+                    okna jest równa lub większa niż medium. Dzięki temu możemy dostosować wyświetlanie podpisów do
+                    różnych rozmiarów ekranu, co wpływa pozytywnie na doświadczenie użytkownika.
+                </p>
+                <pre>
+                    <code>&lt;div id=&quot;carouselExampleCaptions&quot; class=&quot;carousel slide&quot;&gt;
+    &lt;div class=&quot;carousel-indicators&quot;&gt;
+        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleCaptions&quot; data-bs-slide-to=&quot;0&quot; class=&quot;active&quot; aria-current=&quot;true&quot; aria-label=&quot;Slide 1&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleCaptions&quot; data-bs-slide-to=&quot;1&quot; aria-label=&quot;Slide 2&quot;&gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleCaptions&quot; data-bs-slide-to=&quot;2&quot; aria-label=&quot;Slide 3&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;carousel-inner&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+            &lt;div class=&quot;carousel-caption d-none d-md-block&quot;&gt;
+                &lt;h5&gt;First slide label&lt;/h5&gt;
+                &lt;p&gt;Some representative placeholder content for the first slide.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+            &lt;div class=&quot;carousel-caption d-none d-md-block&quot;&gt;
+                &lt;h5&gt;Second slide label&lt;/h5&gt;
+                &lt;p&gt;Some representative placeholder content for the second slide.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+            &lt;div class=&quot;carousel-caption d-none d-md-block&quot;&gt;
+                &lt;h5&gt;Third slide label&lt;/h5&gt;
+                &lt;p&gt;Some representative placeholder content for the third slide.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleCaptions&quot; data-bs-slide=&quot;prev&quot;&gt;
+        &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleCaptions&quot; data-bs-slide=&quot;next&quot;&gt;
+        &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                <p style="margin-top: 50px;">
+                    Można zastosować klasę <strong>.carousel-fade</strong>, która sprawi, że przejście slajdów będzie
+                    płynne.
+                </p>
+                <pre><code>&lt;div id=&quot;carouselExampleFade&quot; class=&quot;carousel slide carousel-fade&quot;&gt;
+    &lt;div class=&quot;carousel-inner&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleFade&quot; data-bs-slide=&quot;prev&quot;&gt;
+        &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleFade&quot; data-bs-slide=&quot;next&quot;&gt;
+        &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                <p style="margin-top: 50px;">
+                    Aby ustawić automatyczne odtwarzanie slidera podczas ładowania strony, należy użyć opcji
+                    <strong>data-bs-ride</strong> z wartością "carousel". Automatyczne odtwarzanie slidera zostanie
+                    wstrzymane po
+                    najechaniu na niego myszką. Możesz kontrolować to zachowanie za pomocą opcji pause. Jeśli jednak
+                    wpiszesz "true" do data-bs-ride, slider nie będzie się automatycznie poruszał, dopóki nie zostanie
+                    wykonana pierwsza interakcja.
+                </p>
+                <pre><code>&lt;div id=&quot;carouselExampleAutoplaying&quot; class=&quot;carousel slide&quot; data-bs-ride=&quot;carousel&quot;&gt; &lt;!-- carousel -&gt; true (automatyczne przewijanie) --&gt;
+    &lt;div class=&quot;carousel-inner&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleAutoplaying&quot; data-bs-slide=&quot;prev&quot;&gt;
+        &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleAutoplaying&quot; data-bs-slide=&quot;next&quot;&gt;
+        &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                <p style="margin-top: 50px;">Dodanie klasy <strong>data-bs-interval</strong> do .carousel-item zmieni
+                    czas automatycznej zmiany slajdu.</p>
+                <pre><code>&lt;div id=&quot;carouselExampleInterval&quot; class=&quot;carousel slide&quot; data-bs-ride=&quot;carousel&quot;&gt;
+    &lt;div class=&quot;carousel-inner&quot;&gt;
+        &lt;div class=&quot;carousel-item active&quot; data-bs-interval=&quot;10000&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot; data-bs-interval=&quot;2000&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;carousel-item&quot;&gt;
+            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleInterval&quot; data-bs-slide=&quot;prev&quot;&gt;
+        &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleInterval&quot; data-bs-slide=&quot;next&quot;&gt;
+        &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+        </div>
+
+    </div>
+    <footer>
+        Aleksandra Wilkosz 2P, Piotr Widórek 2P, Zuzanna Kępa 2P
+    </footer>
+    <script src="../../biblioteka/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>
