@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../style/podstrony.css">
     <link rel="stylesheet" href="../../biblioteka/highlight/styles/atom-one-dark-reasonable.min.css">
 
-    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <title>Podstawy</title>
 </head>
 
@@ -29,27 +28,20 @@
                 </ul>
 
             </li>
-
             <li>
-                <p>Klasy i metody</p>
-                <ul class="dropdown" style="width: 195px;">
-                    <a href="../metody-klasy/klasy.html">
-                        <li>Klasy</li>
+                <p>Dodatkowe funkcje</p>
+                <ul class="dropdown" style="width: 250px;">
+                    <a href="../funkcje/breadcrumbs.html">
+                        <li>Breadcrumbs</li>
                     </a>
-                    <a href="../metody-klasy/metody.html">
-                        <li>Metody</li>
+                    <a href="../funkcje/fade.html">
+                        <li>Fade</li>
                     </a>
-                </ul>
-            </li>
-
-            <li>
-                <p>Zdarzenia i opcje</p>
-                <ul class="dropdown" style="width: 225px;">
-                    <a href="../zdarzenia-opcje/zdarzenia.html">
-                        <li>Zdarzenia</li>
+                    <a href="../funkcje/autoplay.html">
+                        <li>Autoplay</li>
                     </a>
-                    <a href="../zdarzenia-opcje/opcje.html">
-                        <li>Opcje</li>
+                    <a href="../funkcje/infinite.html">
+                        <li>Infite slider</li>
                     </a>
                 </ul>
             </li>
@@ -69,11 +61,11 @@
                 <p>Na początku należy utworzyć strukturę slidera w HTML-u, a następnie go odpowiednio stylizować.</p>
                 <pre style="margin-bottom: 10px;"><code>&lt;div class=&quot;container&quot;&gt;
     &lt;div class=&quot;slider&quot;&gt;
-        &lt;div class=&quot;slider__slides&quot;&gt;
-            &lt;div class=&quot;slider__slide active&quot;&gt;&lt;/div&gt;
-            &lt;div class=&quot;slider__slide&quot;&gt;&lt;/div&gt;
-            &lt;div class=&quot;slider__slide&quot;&gt;&lt;/div&gt;
-            &lt;div class=&quot;slider__slide&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;slider_slides&quot;&gt;
+            &lt;div class=&quot;slider_slide active&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider_slide&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider_slide&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider_slide&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -132,7 +124,7 @@
                     aktywny slajd będzie widoczny.
                 </p>
                 <h2>Dodawanie obrazków</h2>
-                <pre><code> &lt;div class=&quot;slider__slide active&quot;&gt;
+                <pre><code> &lt;div class=&quot;slider_slide active&quot;&gt;
     &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
 &lt;/div&gt;</code></pre>
                 <h2>Dodawanie przycisków przewijania</h2>
@@ -142,25 +134,25 @@
                     będziemy potrzebować tych identyfikatorów, aby móc wybierać te elementy w naszym kodzie JS.</p>
                 <pre style="margin-bottom: 10px;"><code>&lt;div class=&quot;container&quot;&gt;
     &lt;div class=&quot;slider&quot;&gt;
-        &lt;div class=&quot;slider__slides&quot;&gt;
-            &lt;div class=&quot;slider__slide active&quot;&gt;
+        &lt;div class=&quot;slider_slides&quot;&gt;
+            &lt;div class=&quot;slider_slide active&quot;&gt;
                 &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
             &lt;/div&gt;
-            &lt;div class=&quot;slider__slide&quot;&gt;
+            &lt;div class=&quot;slider_slide&quot;&gt;
                 &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
             &lt;/div&gt;
-            &lt;div class=&quot;slider__slide&quot;&gt;
+            &lt;div class=&quot;slider_slide&quot;&gt;
                 &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
             &lt;/div&gt;
-            &lt;div class=&quot;slider__slide&quot;&gt;
+            &lt;div class=&quot;slider_slide&quot;&gt;
                 &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-        &lt;div id=&quot;nav-button--prev&quot; class=&quot;slider__nav-button&quot;&gt;&lt;/div&gt;
-        &lt;div id=&quot;nav-button--next&quot; class=&quot;slider__nav-button&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;nav-button--prev&quot; class=&quot;slider_nav-button&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;nav-button--next&quot; class=&quot;slider_nav-button&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                <pre><code>.slider__nav-button {
+                <pre><code>.slider_nav-button {
     position: absolute;
     height: 70px;
     width: 70px;
@@ -195,6 +187,39 @@
                     wyśrodkuje przycisk, niezależnie od jego aktualnej wysokości.
                 </p>
                 <h2>Dodawanie strzałek</h2>
+                <pre style="margin-bottom: 10px;"><code>#nav-button--prev::after,
+#nav-button--next::after {
+    content: "";
+    position: absolute;
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 3px;
+    width: 40%;
+    height: 40%;
+}</code></pre>
+                <p>
+                    Wykorzystany jest tu pseudoelement ::after, co oznacza, że możemy dodać go do pokazu slajdów
+                    obrazków w
+                    JavaScriptcie bez konieczności dodawania więcej kodu HTML. Tworzy on prostokąt wzdłuż prawej i
+                    dolnej krawędzi.
+                </p>
+                <p>
+                    Następnie należy obrócić te prostokąty, aby krawędzie wyglądały jak strzałki, i
+                    użyć 'translate', aby upewnić się, że są one wyśrodkowane wewnątrz przycisku.
+                </p>
+                <pre><code>#nav-button--next::after{
+    top: 50%;
+    right: 50%;
+    transform: translate(25%, -50%) rotate(-45deg);
+}
+
+#nav-button--prev::after {
+    top: 50%;
+    right: 50%;
+    transform: translate(75%, -50%) rotate(135deg);
+}</code></pre>
+                <p>Warto również dodać media query, aby przyciski dostosowywały się do wielkości ekranu.</p>
             </div>
         </div>
 

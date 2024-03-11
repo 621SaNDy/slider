@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../style/arkusz_zerujacy.css">
+    <link rel="stylesheet" href="../../style/podstrony.css">
+    <link rel="stylesheet" href="../../biblioteka/highlight/styles/atom-one-dark-reasonable.min.css">
+
+    <title>Breadcrumbs</title>
+</head>
+
+<body>
+    <nav>
+        <ul class="menu">
+
+            <li>
+                <p>Czym jest slider?</p>
+                <ul class="dropdown" style="width: 215px;">
+                    <a href="../info/informacje.html">
+                        <li>Informacje</li>
+                    </a>
+                    <a href="../info/podstawy.html">
+                        <li>Podstawy Slidera</li>
+                    </a>
+                </ul>
+
+            </li>
+            <li>
+                <p>Dodatkowe funkcje</p>
+                <ul class="dropdown" style="width: 250px;">
+                    <a href="../funkcje/breadcrumbs.html">
+                        <li>Breadcrumbs</li>
+                    </a>
+                    <a href="../funkcje/fade.html">
+                        <li>Fade</li>
+                    </a>
+                    <a href="../funkcje/autoplay.html">
+                        <li>Autoplay</li>
+                    </a>
+                    <a href="../funkcje/infinite.html">
+                        <li>Infite slider</li>
+                    </a>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div class="cont">
+        <header>
+            <h1>Breadcrumbs</h1>
+        </header>
+
+        <div class="opisy flex">
+            <div class="opis">
+                <p>
+                    Nawigacja okruszkowa to ścieżka służąca do poruszania się po stronie internetowej umożliwiająca
+                    użytkownikowi łatwiejszą
+                    orientację. Breadcrumbs pokazują osobie na stronie, w którym miejscu się aktualnie znajduje, a także
+                    umożliwiają szybki powrót do poprzednio przeglądanych podstron, a w przypadku slidera slajdów.
+                </p>
+                <p>
+                    Do kodu HTML należy dodać kilka elementów:
+                </p>
+                <pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;slider&quot;&gt;
+        &lt;div class=&quot;slider_slides&quot;&gt;
+            &lt;!-- our slides go here --&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;nav-button--prev&quot; class=&quot;slider_nav-button&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;nav-button--next&quot; class=&quot;slider_nav-button&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;slider_nav&quot;&gt;
+            &lt;div class=&quot;slider_navlink active&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider_navlink&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider_navlink&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider_navlink&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p>
+                    Element slider_nav zawiera teraz cztery divy slider_navlink - jeden dla każdego
+                    slajdu. Pierwszy z nich ma również dodaną klasę <strong>active</strong> , którą możemy wykorzystać,
+                    aby wyróżnić
+                    aktywne breadcrumbs'y spośród reszty.
+                </p>
+                <p>
+                    Przeważnie te elementy nawigacyjne są umieszczane na dole slidera.
+                </p>
+                <pre><code>.slider_nav {
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}</code></pre>
+                <p>
+                    Przykładowe wystylizowanie breadcrumbs'ów:
+                </p>
+                <pre><code>.slider_navlink {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 1px #fff solid;
+    background-color: #333;
+    opacity: .8;
+    margin: 0 10px 0 10px;
+    cursor: pointer;
+}
+
+.slider_navlink.active {
+    background-color: #fff;
+    border: 1px #333 solid;
+}</code></pre>
+                <h2>Dodawanie JS</h2>
+                <pre><code>let slides = document.getElementsByClassName("slider_slide");
+let navlinks = document.getElementsByClassName("slider_navlink");</code></pre>
+                <p>
+                    Pierwsza linia przechodzi przez znacznik, znajduje każdy element o nazwie slider_slide i
+                    przechowuje do niego wskaźnik w tablicy o nazwie slides. Następna linia robi to samo dla
+                    elementów nawigacyjnych, tym razem umieszczając je w tablicy o nazwie navlinks.
+                </p>
+                <p>
+                    Należy również śledzić, który <strong>slajd jest obecnie aktywny</strong> :
+                </p>
+                <pre><code>let currentSlide = 0;</code></pre>
+                <p>
+                    Następnie dodać <strong>eventListener'y</strong> dla każdego z przycisków:
+                </p>
+                <pre><code>document.getElementById("nav-button--next").addEventListener("click", () => {
+    changeSlide(currentSlide + 1)
+});
+document.getElementById("nav-button--prev").addEventListener("click", () => {
+    changeSlide(currentSlide - 1)
+});</code></pre>
+
+                <h2>Tworzenie funkcji</h2>
+                <p>
+                    Krok po kroku:
+                <ol>
+                    <li>
+                        Funkcja changeSlide przyjmuje jeden argument, moveTo, który jest numerem slajdu, do którego
+                        chcesz przejść.
+                    </li>
+                    <li>
+                        Pierwsza linia sprawdza, czy moveTo jest równy lub większy od slides.length - oznacza to, że
+                        jesteśmy na ostatnim slajdzie i próbujemy przejść do przodu. W takim przypadku ustawiamy moveTo
+                        na 0 - co spowoduje powrót do pierwszego slajdu.
+                    </li>
+                    <li>
+                        Następna linia wykonuje to samo, jeśli użytkownik próbuje cofnąć się z pierwszego slajdu - po
+                        prostu zostanie przekierowany do ostatniego slajdu.
+                    </li>
+                    <li>
+                        Następne cztery linie korzystają z tablic slides i navlinks, które zostały utworzone wcześniej.
+                        Korzystając z classList.toggle("active"), kod usunie klasę aktywną z bieżącego slajdu i
+                        doda ją do slajdu, do którego chcemy się przesunąć.
+                    </li>
+                    <li>
+                        Na koniec należy ustawić currentSlide na moveTo, ponieważ to teraz jest aktywny slajd.
+                    </li>
+                </ol>
+                </p>
+                <pre><code>function changeSlide(moveTo) {
+    if (moveTo &gt;= slides.length) {moveTo = 0;}
+    if (moveTo &lt; 0) {moveTo = slides.length - 1;}
+    
+    slides[currentSlide].classList.toggle(&quot;active&quot;);
+    navlinks[currentSlide].classList.toggle(&quot;active&quot;);
+    slides[moveTo].classList.toggle(&quot;active&quot;);
+    navlinks[moveTo].classList.toggle(&quot;active&quot;);
+    
+    currentSlide = moveTo;
+}</code></pre>
+                <h2>Nadanie funkcji klikalności breadcrumbs'om</h2>
+                <pre><code>document.querySelectorAll('.slider_navlink').forEach((bullet, bulletIndex) => {
+    bullet.addEventListener('click', () => {
+        if (currentSlide !== bulletIndex) {
+            changeSlide(bulletIndex);
+        }
+    })
+})</code></pre>
+                <p>
+                    Pomysł polega na tym, że jeśli zostanie kliknięty przycisk, wiemy, że użytkownik chce przejść do
+                    slajdu o
+                    indeksie
+                    bulletIndex - więc możemy po prostu przekazać tę wartość do naszej funkcji z
+                    changeSlide(bulletIndex).
+                </p>
+                <p>
+                    Jednak, lepiej wcześniej sprawdzić, czy nie jest już na slajdzie o indeksie bulletIndex. Nie ma
+                    sensu
+                    zanikanie i ponowne pojawianie się tego samego slajdu. Więc konstrukcja if zapewnia, że będziemy
+                    wywoływać changeSlide tylko wtedy, gdy <strong>currentSlide nie równa się bulletIndex</strong>.
+
+
+
+
+
+
+                </p>
+
+
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        Aleksandra Wilkosz 2P, Piotr Widórek 2P, Zuzanna Kępa 2P
+    </footer>
+    <script src="../../biblioteka/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>
