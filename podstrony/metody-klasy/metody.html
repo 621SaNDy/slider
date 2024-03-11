@@ -9,13 +9,11 @@
     <link rel="stylesheet" href="../../style/podstrony.css">
     <link rel="stylesheet" href="../../biblioteka/highlight/styles/atom-one-dark-reasonable.min.css">
 
-
+    <link rel="stylesheet" href="../../biblioteka/bootstrap/carousel.css">
+    <script src="../../biblioteka/bootstrap/carousel.min.js" defer></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Metody</title>
 
-    <!-- <script src="skrypt-1.js" defer></script>
-    <link rel="stylesheet" href="../../biblioteka/bootstrap/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
 
 
@@ -23,7 +21,7 @@
         function przyklad1() {
             for (let r of document.getElementsByName("p1")) {
                 if (r.checked) {
-                    document.querySelector("#myCarousel").style.gap = r.value;
+                    document.querySelector("#carouselExampleControls").style.gap = r.value;
                     r.parentElement.style.backgroundColor = "#6b917e";
                 }
                 else {
@@ -106,8 +104,8 @@
             </div>
 
 
-            <!-- <div class="przyklad" onchange="przyklad1()">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="przyklad" onchange="przyklad1()">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="../../images/malpa1.jpeg" class="d-block w-100" alt="...">
@@ -119,16 +117,17 @@
                             <img src="../../images/malpa3.jpeg" class="d-block w-100" alt="...">
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-            </div> -->
+
+            </div>
         </div>
     </div>
 
@@ -141,14 +140,13 @@
     <script src="../../biblioteka/highlight/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <script>
-        const myCarouselElement = document.querySelector('#myCarousel')
+        const myCarouselElement = document.querySelector('#carouselExampleControls')
 
         const carousel = new bootstrap.Carousel(myCarouselElement, {
             interval: 2000,
             touch: false
         })
     </script>
-
 </body>
 
 </html>

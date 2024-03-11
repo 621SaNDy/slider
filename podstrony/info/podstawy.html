@@ -64,74 +64,137 @@
 
         <div class="opisy flex">
             <div class="opis">
-                <p>
-                    Zalecane jest używanie elementów &lt;button> do obsługi przycisków, ale można także używać elementów
-                    <a> z atrybutem role="button". Bardzo ważne jest, aby w klasie jednego ze slajdów dodać
-                        "active", w przeciwnym razie cały slider się nie pokaże. Slajd oznaczony jako avtive będzie
-                        wyświetlony na samym początku. Slidery muszą mieć różne identyfikatory. Poniżej znajduje
-                        się przykład podstawowego slideru stworzonego przy użyciu Bootstrapa.
-                </p>
-                <pre>
-                    <code>&lt;div id=&quot;carouselExample&quot; class=&quot;carousel slide&quot;&gt; <br>
-    &lt;div class=&quot;carousel-inner&quot;&gt; <br>
-        &lt;div class=&quot;carousel-item active&quot;&gt; <br>
-            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt; <br>
-        &lt;/div&gt; <br>
-        &lt;div class=&quot;carousel-item&quot;&gt; <br> 
-            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt; <br>
-        &lt;/div&gt; <br>
-        &lt;div class=&quot;carousel-item&quot;&gt; <br>
-            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt; <br>
-        &lt;/div&gt; <br>
-    &lt;/div&gt; <br>
-    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExample&quot; data-bs-slide=&quot;prev&quot;&gt;<br>
-        &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;<br>
-        &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;<br>
-    &lt;/button&gt;<br>
-    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExample&quot; data-bs-slide=&quot;next&quot;&gt;<br>
-        &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;<br>
-        &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;<br>
-    &lt;/button&gt; <br>
-&lt;/div&gt;</code>
-                </pre>
-                <h2>Skakanie pomiędzy slajdami</h2>
-                <p>
-                    Aby umożliwić przeskakiwanie pomiędzy slidami, dodajemy przyciski, dzięki którym możemy odnieść się
-                    do konkretnego slajdu. Warto wspomnieć, iż tutaj również potrzebujemy atrybutu active do buttonu,
-                    który będzie odpowiedzialny za ten sam slide, któremu daliśmy active wcześniej.
-                </p>
-                <pre>
-                    <code>&lt;div id=&quot;carouselExampleIndicators&quot; class=&quot;carousel slide&quot;&gt;
-    &lt;div class=&quot;carousel-indicators&quot;&gt;
-        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide-to=&quot;0&quot; class=&quot;active&quot; aria-current=&quot;true&quot; aria-label=&quot;Slide 1&quot;&gt;&lt;/button&gt;
-        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide-to=&quot;1&quot; aria-label=&quot;Slide 2&quot;&gt;&lt;/button&gt;
-        &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide-to=&quot;2&quot; aria-label=&quot;Slide 3&quot;&gt;&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;carousel-inner&quot;&gt;
-        &lt;div class=&quot;carousel-item active&quot;&gt;
-            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
-            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;carousel-item&quot;&gt;
-            &lt;img src=&quot;...&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide=&quot;prev&quot;&gt;
-        &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-        &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
-    &lt;/button&gt;
-    &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide=&quot;next&quot;&gt;
-        &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-        &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
-    &lt;/button&gt;
-&lt;/div&gt;
-                    </code>
-                </pre>
-                <h2>Inicjalizacja slidera w JS</h2>
-                <pre><code> const carousel = new bootstrap.Carousel('#myCarousel')</code></pre>
 
+                <h2>HTML i CSS</h2>
+                <p>Na początku należy utworzyć strukturę slidera w HTML-u, a następnie go odpowiednio stylizować.</p>
+                <pre style="margin-bottom: 10px;"><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;slider&quot;&gt;
+        &lt;div class=&quot;slider__slides&quot;&gt;
+            &lt;div class=&quot;slider__slide active&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider__slide&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider__slide&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider__slide&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code>.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slider {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 10px;
+    background-color: white;
+    overflow: hidden;
+}
+.slider_slides {
+  width: 100%;
+  padding-top: 66%;
+}
+
+.slider_slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: bold;   
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+    opacity: 0;
+}
+
+.slider_slide.active {
+    opacity: 1;
+}</code></pre>
+                <p>
+                    Ustawienie wartości padding-top na procent w elemencie slider_slides pozwoli utrzymać jego
+                    proporcje. Position absolute top i left wynoszą 0, a szerokość i wysokość wynoszą
+                    100%.
+                </p>
+                <p>
+                    Oznacza to, że każdy slajd wypełni całkowicie pierwszy rodzic, któremu została zastosowana
+                    właściwość position.
+                </p>
+                <p>
+                    Oznacza to również, że cztery slajdy są ułożone bezpośrednio na sobie. Warto też zauważyć że każdy
+                    z nich jest <strong>przezroczysty</strong> . Jednak część <strong>.slider_slide.active</strong>
+                    oznacza, że każdy
+                    element posiadający
+                    zarówno klasę slider_slide, jak i active, będzie miał przezroczystość ustawioną na 1 - co sprawi, że
+                    aktywny slajd będzie widoczny.
+                </p>
+                <h2>Dodawanie obrazków</h2>
+                <pre><code> &lt;div class=&quot;slider__slide active&quot;&gt;
+    &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
+&lt;/div&gt;</code></pre>
+                <h2>Dodawanie przycisków przewijania</h2>
+                <p>
+                    Każdy przycisk powinien mieć <strong>unikalne id</strong> – ponieważ tworzymy slider przy pomocy
+                    JavaScriptu,
+                    będziemy potrzebować tych identyfikatorów, aby móc wybierać te elementy w naszym kodzie JS.</p>
+                <pre style="margin-bottom: 10px;"><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;slider&quot;&gt;
+        &lt;div class=&quot;slider__slides&quot;&gt;
+            &lt;div class=&quot;slider__slide active&quot;&gt;
+                &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;slider__slide&quot;&gt;
+                &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;slider__slide&quot;&gt;
+                &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;slider__slide&quot;&gt;
+                &lt;img src=&quot;...&quot; alt=&quot;...&quot; /&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;nav-button--prev&quot; class=&quot;slider__nav-button&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;nav-button--next&quot; class=&quot;slider__nav-button&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code>.slider__nav-button {
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background: black;
+    opacity: .8;
+    cursor: pointer;
+}</code></pre>
+                <p>Aby użytkownik wiedział że może przyciski, należy użyć właściowości <strong>`cursor:
+                        pointer`</strong>.
+                </p>
+                <pre><code>#nav-button--prev {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+#nav-button--next {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}</code></pre>
+                <p>
+
+                    Ustawienie wartości top na 50% umieści górę elementu w połowie odległości od górnej krawędzi
+                    rodzica. Tak więc nie będzie on perfekcyjnie wyśrodkowany w pionie - będzie trochę niżej, niż
+                    powinien.
+                </p>
+                <p>
+                    Rozwiązaniem jest również dodanie <strong>transform: translateY(-50%);</strong> . Podczas
+                    przesunięcia o pewien
+                    procent, przesuwasz element proporcjonalnie do jego własnego rozmiaru. Dlatego -50% perfekcyjnie
+                    wyśrodkuje przycisk, niezależnie od jego aktualnej wysokości.
+                </p>
+                <h2>Dodawanie strzałek</h2>
             </div>
         </div>
 
