@@ -35,7 +35,7 @@
                         <li>Breadcrumbs</li>
                     </a>
                     <a href="../funkcje/autoplay.html">
-                        <li>Autoplay</li>
+                        <li>AutoPlay</li>
                     </a>
                     <a href="../funkcje/infinite.html">
                         <li>AutoAdd</li>
@@ -53,6 +53,45 @@
 
         <div class="opisy flex">
             <div class="opis">
+                <p>
+                    Jest to funkcja, która dodaje kolejne nawigatory, poprzez zliczanie ilości div'ów z obrazkami.
+                    Dzięki
+                    niej dodawanie i odejmowanie ilości obrazków będzie o wiele łatwiejsze. Jednak żeby ten kod
+                    zadziałał, należy:
+                </p>
+                <ol>
+                    <li>Usunąć wszystkie Navigatory, poza jednym na którym będzie ustawiony active.</li>
+                    <li>Zmienić slider_nav z klasy, na id. Jest to bardzo ważne, ponieważ z klasą jest dużo problemów.
+                    </li>
+                </ol>
+                <pre style="margin-top:20px;"><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;slider&quot;&gt;
+        &lt;div class=&quot;slider_slides&quot;&gt;
+            &lt;!-- our slides go here --&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;nav-button--prev&quot; class=&quot;slider_nav-button&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;nav-button--next&quot; class=&quot;slider_nav-button&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;slider_nav&quot;&gt; 
+            &lt;div class=&quot;slider_navlink active&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider_navlink&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider_navlink&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;slider_navlink&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre style="margin-top: 10px;"><code>function navAdd(){
+    for(i=0; i&lt;slides.length-1; i++){
+        var el = document.createElement(&quot;div&quot;);
+        el.classList.add(&#39;slider_navlink&#39;);
+        document.getElementById(&#39;slider_nav&#39;).appendChild(el);
+    }
+}</code></pre>
+                <p>
+                    Funkcja działa poprzez wykorzystanie zliczonych klasą div'ów z obrazkami, żeby dowiedzieć się o ich
+                    ilości i na ich podstawie dodać kolejne elementy, które posłużą za nawigatory. Najpierw dodajemy
+                    element, potem klasę, a następnie gdzie ma się pojawić. Ważne jest, by odjąć 1 od liczby wszystkich
+                    slajdów, ponieważ jeden slajd pozostawiliśmy jako domyślny z activem.
+                </p>
             </div>
         </div>
 
