@@ -67,7 +67,42 @@ function resetTimer() {
                     niego funkcja nie
                     zadziała prawidłowo.
                 </p>
+                <p>
+                    Jednak, aby autoplay działał prawidłowo, funkcję tą powinno umieścić się w wielu miejscach
+                    (po każdym kliknięciu nawigatora i strzałki). Aby uniknąć natychmiastowego pominięcia po przejściu
+                    na
+                    wskazaną stronę, należy zresetwać timer.
+                </p>
+                <pre><code>document.querySelectorAll('.slider__navlink').forEach((bullet, bulletIndex) => {
+    bullet.addEventListener('click', () => {
+        if (currentSlide !== bulletIndex) {
+            changeSlide(bulletIndex);
+        }
+        &lt;!-- tutaj resetujemy timer, gdy uzyjemy nawigatora --&gt;
+        resetTimer();
+    })
+})</code></pre>
+                <pre style="margin-top:10px;"><code>document.getElementById("nav-button--next").addEventListener("click", () =>{
+    changeSlide(currentSlide + 1);
+    &lt;!-- tutaj resetujemy timer, gdy uzyjemy strzałki next--&gt;
+    resetTimer();
+});
 
+document.getElementById("nav-button--prev").addEventListener("click", () => {
+    changeSlide(currentSlide - 1);
+    &lt;!-- tutaj resetujemy timer, gdy uzyjemy strzałki prev--&gt;
+    resetTimer();
+});</code></pre>
+                <p>
+                    Następnie należy wywołać funkcję w <strong>odpowiednim miejscu</strong>. Będzie to zależne od
+                    pożądanego efektu. Na
+                    przykład, jeżeli
+                    chcemy, żeby slajdy same się przesuwały od samego początku, należy strong wywołać tą funckcję tuż po
+                    odpaleniu strony. Jeżeli jednak zostawimy
+                    tą funkcję tylko w miejscach wspominanych wcześniej, autoplay zacznie działać tylko i
+                    wyłącznie po pierwszej interakcji ze
+                    sliderem.
+                </p>
             </div>
         </div>
 
